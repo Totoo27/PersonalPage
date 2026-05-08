@@ -3,7 +3,7 @@
     --card-bg: #c8dcdb;
     --text-primary: #000000;
     --text-secondary: #1f1f1f;
-    --accent: #a300e9; 
+    --accent: #c800ec; 
     --accent-glow: rgba(164, 13, 202, 0.23);
     --accent-glow-secondary: rgba(0, 121, 181, 0.329);
 }
@@ -14,12 +14,16 @@
     box-sizing: border-box;
 }
 
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: radial-gradient(circle at bottom left, var(--accent-glow-secondary), transparent), radial-gradient(circle at top right, var(--accent-glow), transparent);
     color: var(--text-primary);
     line-height: 1.6;
-    overflow-x: hidden;
 }
 
 .container {
@@ -32,9 +36,14 @@ body {
 
 
 .hero {
-    padding: 15rem 0;
-    
-    border-bottom: 2px solid var(--accent);
+    padding: 8rem 0;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    margin: auto 0 0.5rem;
+    font-weight: bold;
+    text-align: center;
 }
 
 .hero-grid {
@@ -44,15 +53,8 @@ body {
     align-items: center;
 }
 
-.hero-content h1 {
-    font-size: 3rem;
-    background: #000000;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-.tagline {
-    font-size: 1.5rem;
+.hero-content h2 {
+    font-size: 2rem;
     color: var(--accent);
     font-weight: bold;
     margin-bottom: 1rem;
@@ -61,6 +63,7 @@ body {
 .contact-links {
     margin: 1.5rem 0;
     display: flex;
+    flex-wrap: wrap;
     gap: 1.5rem;
 }
 
@@ -90,10 +93,13 @@ body {
 }
 
 .profile-img {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 20px;
-    border: 3px solid var(--accent);
+    width: 22rem;
+    height: 22rem;
+    margin-left: 5rem;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 50%;
+    border: 2px solid var(--accent);
     filter: grayscale(20%);
 }
 
@@ -141,33 +147,67 @@ body {
 
 .project-card {
     background: var(--card-bg);
+    position: relative;
+    transition: transform 0.3s ease;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
     color: inherit;
     display: flex;
     flex-direction: column;
-    transition: transform 0.3s;
-    border: 1px solid #30363d;
+    outline: none;
+    border: 2px solid var(--accent);
+    min-height: 20rem;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent);
+    transform: translateY(-10px) scale(1.03);
+    
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0);
+  transition: background 0.3s ease;
+  pointer-events: none;
+}
+
+.project-card:hover::before {
+  background: rgba(0, 0, 0, 0.65);
 }
 
 .card-img {
-    height: 180px;
-    background-size: cover;
-    background-position: center;
+    display: none;
 }
 
 .card-info {
-    padding: 1.5rem;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: block;
+    padding: 1rem;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.project-card:hover .card-info {
+    opacity: 1;
 }
 
 .card-info h3 {
     margin-bottom: 0.5rem;
+    font-size: 1.5rem;
     color: var(--accent);
 }
 
@@ -182,6 +222,11 @@ footer {
 
 /* RESPONSIVE */
 @media (max-width: 768px) {
+
+    body {
+        width: auto;
+    }
+
     .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
@@ -189,22 +234,37 @@ footer {
     .hero-image {
         order: -1;
     }
+
+    .profile-img {
+        margin: 0 auto 2rem;
+        width: 18rem;
+        height: 18rem;
+    }
     .contact-links {
         justify-content: center;
     }
 }
 
 /* =========================================
-   ANIMACIONES (NUEVO SECTION)
+   ANIMACIONES ENTRADA
    ========================================= */
-
-/* --- 1. Animaciones de Entrada (Al Cargar) --- */
 
 /* Definimos la animación clave */
 @keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
     }
     to {
         opacity: 1;
@@ -223,22 +283,19 @@ footer {
     }
 }
 
-/* Aplicamos las animaciones a los elementos del HERO */
-.hero-content h1,
-.hero-content .tagline,
+.hero-content h2,
 .hero-content .description,
 .contact-links,
 .btn-cv,
 .project-section,
 .about-text,
 .skills {
-    opacity: 0; /* Empezamos ocultos */
+    opacity: 0;
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Retrasos (Delays) para un efecto escalonado */
-.hero-content h1 { animation-delay: 0.2s; }
-.hero-content .tagline, .about-text { animation-delay: 0.4s; }
+.hero-content h2 { animation-delay: 0.3s; }
+.about-text { animation-delay: 0.4s; }
 .hero-content .description, .skills { animation-delay: 0.6s; }
 .contact-links, .project-section  { animation-delay: 0.8s; }
 .btn-cv { animation-delay: 1s; }
@@ -249,4 +306,11 @@ footer {
     opacity: 0;
     animation: fadeInRight 1s ease-out forwards;
     animation-delay: 0.5s;
+}
+
+/* Animacion para el nombre (entrada desde arriba) */
+.hero h1 {
+    opacity: 0;
+    animation: fadeInDown 0.8s ease-out forwards;
+    animation-delay: 0.2s;
 }
