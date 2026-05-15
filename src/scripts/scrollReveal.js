@@ -1,11 +1,14 @@
-window.addEventListener('scroll', () => {
+
+window.addEventListener("DOMContentLoaded", () => {
+    
+    window.addEventListener('scroll', () => {
     const reveals = document.querySelectorAll('.project-card, .about');
     
     reveals.forEach(reveal => {
         const windowHeight = window.innerHeight;
         const revealTop = reveal.getBoundingClientRect().top;
         const revealPoint = 150;
-
+    
         if (revealTop < windowHeight - revealPoint) {
             reveal.style.opacity = "1";
             reveal.style.transform = "";
@@ -14,11 +17,13 @@ window.addEventListener('scroll', () => {
             reveal.style.transform = "translateY(30px)";
         }
     });
-});
+    });
+    
+    // Inicialización de estilos para el efecto scroll
+    document.querySelectorAll('.project-card, .about').forEach(el => {
+        el.style.opacity = "0";
+        el.style.transform = "translateY(30px)";
+        el.style.transition = "all 0.8s ease-out";
+    });
 
-// Inicialización de estilos para el efecto scroll
-document.querySelectorAll('.project-card, .about').forEach(el => {
-    el.style.opacity = "0";
-    el.style.transform = "translateY(30px)";
-    el.style.transition = "all 0.8s ease-out";
 });

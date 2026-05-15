@@ -1,0 +1,87 @@
+---
+import Skills from './Skills.astro';
+
+ import ProjectCard from './ProjectCard.astro';
+
+ import proyecto1p from '../assets/proyecto1p.png';
+ import proyecto1 from '../assets/proyecto1.png';
+ import proyecto2 from '../assets/proyecto2.png';
+ import proyecto3 from '../assets/proyecto3.png';
+---
+
+
+    <Skills />
+
+    <!-- SECCIÓN PROYECTOS -->
+    <main class="container">
+        <!-- Proyectos personales -->
+        <section class="project-section scroll-reveal">
+            <h2 class="section-title">Proyectos personales</h2>
+            <div class="projects-grid">
+                <!-- Card 1 -->
+
+                
+                <ProjectCard 
+                    titulo="Host EFT" 
+                    descripcion="Bot de automatización para el juego 'Haxball', enteramente desarrollado en JavaScript. Almacena y administra datos de jugadores con localStorage, Agrega comandos, automatización de posicionamiento en equipos, y cuestiones de gestión del servidor." 
+                    imagen={proyecto1p} 
+                    enlace="https://github.com/Totoo27/Host-EFT.git"
+                    tipo="Bot"
+                />
+
+            </div>
+        </section>
+
+        <!-- Proyectos escolares destacados -->
+        <section class="project-section scroll-reveal">
+            <h2 class="section-title">Proyectos escolares destacados</h2>
+            <div class="projects-grid">
+                <!-- Card 1 -->
+                 <ProjectCard 
+                    titulo="Odisea de Moya" 
+                    descripcion="Videojuego diseñado en Java con implementación de polimorfismo y lógica condicional con múltiples finales e interacciones RPG, al recorrido del juego se le suma una lógica de puntuación basada en inputs al ritmo de canciones de manera similar a un 'StepMania'." 
+                    imagen={proyecto1} 
+                    enlace="https://github.com/tomy08/juego-final-lpoo.git"
+                    tipo="Juego"
+                />
+                <!-- Card 2 -->
+                 <ProjectCard 
+                    titulo="Anteoción" 
+                    descripcion="Página web E-Commerce creada para la empresa ficticia Anteoción, con diseño futurista/moderno responsive, funcionalidades interactivas y guardado de datos con localStorage utilizando JavaScript." 
+                    imagen={proyecto2} 
+                    enlace="https://github.com/Totoo27/Pagina-Anteocion.git"
+                    tipo="Web"
+                />
+                <!-- Card 3 -->
+                 <ProjectCard 
+                    titulo="The Pirate Oddysey" 
+                    descripcion="Videojuego plataformero shooter diseñado en Java, con manejo de vida, enemigos y jefes, sistema de niveles y puntuación final con el objetivo de incitar al usuario a superar los niveles con su mejor calificación buscando rejugabilidad." 
+                    imagen={proyecto3} 
+                    enlace="https://github.com/Totoo27/Arcade.git"
+                    tipo="Juego"
+                />
+
+            </div>
+        </section>
+    </main>
+
+    <style>  
+    .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+    }
+        
+    .section-title {
+        margin: 3rem 0 1.5rem;
+        border-left: 5px solid var(--accent);
+        padding-left: 1rem;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+
+    </style>

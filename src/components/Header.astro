@@ -1,0 +1,192 @@
+---
+    import fotoPerfil from '../assets/foto-perfil.jpg';
+---
+
+    <header class="hero">
+        <h1>Ignacio Esteban Diaz Diaz</h1>
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <h2 class="tagline">Desarrollador de Software</h2>
+                <p class="description">
+                    Especializado en crear soluciones eficientes, Enfocado en la innovación, aprendizaje continuo, y el desarrollo eficiente de aplicaciones.
+                </p>
+                
+                <div class="contact-links">
+                    <a href="https://github.com/Totoo27" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="mailto:ignaciodiazdiaz27@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                    <a href="https://www.linkedin.com/in/ignacio-esteban-diaz-diaz-414062402/" target="_blank"><i class="fab fa-linkedin"></i> Linkedin</a>
+                    <a href="tel:+5491151060888"><i class="fas fa-phone"></i>+54 9 11 5106-0888</a>
+                </div>
+
+                <a href="https://drive.google.com/file/d/1SXfW0HF_YEPrjUF9iyNWeEvoNT8gilo8/view?usp=sharing" class="btn-cv">Descargar CV <i class="fas fa-download"></i></a>
+            </div>
+            
+            <div class="hero-image">
+                <img src={fotoPerfil.src} alt="Foto de perfil" class="profile-img">
+            </div>
+        </div>
+    </header>
+
+    <style>
+
+        .container {
+    	    max-width: 1100px;
+    	    margin: 0 auto;
+    	    padding: 2rem;
+	    }
+        
+        .hero {
+            padding: 8rem 0;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin: auto 0 0.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .hero-content h2 {
+            font-size: 2rem;
+            color: var(--accent);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-links {
+            margin: 1.5rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+        }
+        
+        .contact-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .contact-links a:hover {
+            color: var(--accent);
+        }
+        
+        .btn-cv {
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            background: var(--accent);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            border: 1px solid var(--accent);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-cv:hover {
+            color: var(--accent);
+            background-color: white;
+        }
+        
+        .profile-img {
+            width: 22rem;
+            height: 22rem;
+            margin-left: 5rem;
+            object-fit: cover;
+            object-position: center center;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            filter: grayscale(20%);
+        }
+        
+        @media (max-width: 768px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .hero-image {
+                order: -1;
+            }
+        
+            .profile-img {
+                margin: 0 auto 2rem;
+                width: 18rem;
+                height: 18rem;
+            }
+            .contact-links {
+                justify-content: center;
+            }
+        }
+        
+        /* Definimos la animación clave */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .hero-content h2,
+        .hero-content .description,
+        .contact-links,
+        .btn-cv,
+        .project-section,
+        .about-text,
+        .skills {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+        
+        .hero-content h2 { animation-delay: 0.3s; }
+        .about-text { animation-delay: 0.4s; }
+        .hero-content .description, .skills { animation-delay: 0.6s; }
+        .contact-links, .project-section  { animation-delay: 0.8s; }
+        .btn-cv { animation-delay: 1s; }
+        
+        
+        /* Animación para la foto de perfil (entrada desde la derecha) */
+        .hero-image {
+            opacity: 0;
+            animation: fadeInRight 1s ease-out forwards;
+            animation-delay: 0.5s;
+        }
+        
+        /* Animacion para el nombre (entrada desde arriba) */
+        .hero h1 {
+            opacity: 0;
+            animation: fadeInDown 0.8s ease-out forwards;
+            animation-delay: 0.2s;
+        }
+        
+    </style>

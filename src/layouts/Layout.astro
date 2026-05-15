@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<link
+    	rel="stylesheet"
+    	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  		/>
+		<title>Mi Portfolio | Ignacio</title>
+	</head>
+	<body>
+		<div class="background">
+
+  			<div class="pentagon">
+    			<div class="inner"></div>
+			</div>
+  			<div class="pentagon">
+				<div class="inner"></div>
+			</div>
+			<div class="pentagon">
+			    <div class="inner"></div>
+			</div>
+			<div class="pentagon">
+				<div class="inner"></div>
+			</div>
+			<div class="pentagon">
+			    <div class="inner"></div>
+			</div>
+
+		</div>
+		
+		<slot />
+
+		<script>
+  			import "../scripts/scrollReveal.js";
+		</script>
+	</body>
+</html>
+
+<style>
+	:root {
+    	--bg-color: #cddbe6;
+    	--card-bg: #0f0b10;
+    	--text-primary: #FFFFFF;
+    	--text-secondary: #000000;
+    	--accent: #c800ec; 
+    	--accent-glow: rgba(164, 13, 202, 0.23);
+    	--accent-glow-secondary: rgba(0, 121, 181, 0.329);
+	}
+
+	* {
+    	margin: 0;
+    	padding: 0;
+   	 	box-sizing: border-box;
+	}
+
+	html, body {
+   		width: 100%;
+    	overflow-x: hidden;
+	}
+
+	body {
+		background: #000;
+    	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    	color: var(--text-primary);
+    	line-height: 1.6;
+	}
+
+	.background {
+    	position: fixed;
+    	inset: 0;
+    	overflow: hidden;
+    	z-index: -1;
+    	background: radial-gradient(circle, var(--accent-glow-secondary), transparent 60%), radial-gradient(circle, var(--accent-glow), transparent 60%);
+    	background-position: left bottom, right top;
+    	background-size: 200%, 200%;
+    	background-repeat: no-repeat;
+    	animation: moveBackground 20s infinite ease-in-out;
+	}
+
+	@keyframes moveBackground {
+		0%, 100% {
+			background-position: left bottom, right top;
+			opacity: 1;
+		}
+
+		50% {
+			opacity: 1;
+			background-position: right bottom, left top;
+		}
+
+		25%, 75% {
+			opacity: 0.35;
+		}
+	}
+
+	/* RESPONSIVE */
+	@media (max-width: 768px) {
+
+    body {
+        width: auto;
+    }
+
+	}
+
+</style>
