@@ -1,0 +1,34 @@
+---
+
+import Skills from '../Skills/Skills.astro';
+import PersonalProjects from '../Projects/PersonalProjects.astro';
+import SchoolProjects from '../Projects/SchoolProjects.astro';
+
+---
+
+    <!-- SECCIÓN SKILLS -->
+    <Skills />
+
+    <!-- SECCIÓN PROYECTOS -->
+    <main class="container">
+
+        <PersonalProjects />
+        <SchoolProjects />
+
+    </main>
+
+    <style>  
+
+    :global(.section-title) {
+        margin: 3rem 0 1.5rem;
+        border-left: 5px solid var(--accent);
+        padding-left: 1rem;
+    }
+
+    :global(.container) {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+    }
+
+    </style>

@@ -1,0 +1,37 @@
+---
+import proyecto1p from '../../assets/proyecto1p.png';
+
+ import ProjectCard from '../Projects/ProjectCard.astro';
+---
+    
+    <section class="project-section scroll-reveal">
+            <h2 class="section-title">Proyectos personales</h2>
+            <div class="projects-grid">
+
+                <!-- Card 1 -->
+                <ProjectCard 
+                    titulo="Host EFT" 
+                    descripcion="Bot de automatización para el juego 'Haxball', enteramente desarrollado en JavaScript. Almacena y administra datos de jugadores con localStorage, Agrega comandos, automatización de posicionamiento en equipos, y cuestiones de gestión del servidor." 
+                    imagen={proyecto1p} 
+                    enlace="https://github.com/Totoo27/Host-EFT.git"
+                    tipo="Bot"
+                />
+
+            </div>
+        </section>
+
+    <style>  
+
+        .section-title {
+            margin: 3rem 0 1.5rem;
+            border-left: 5px solid var(--accent);
+            padding-left: 1rem;
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+    </style>

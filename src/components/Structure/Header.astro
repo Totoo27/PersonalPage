@@ -1,5 +1,5 @@
 ---
-    import fotoPerfil from '../assets/foto-perfil.jpg';
+    import fotoPerfil from '../../assets/foto-perfil.jpg';
 ---
 
     <header class="hero">
@@ -55,7 +55,7 @@
         
         .hero-content h2 {
             font-size: 2rem;
-            color: var(--accent);
+            color: var(--text-primary);
             font-weight: bold;
             margin-bottom: 1rem;
         }
@@ -100,7 +100,8 @@
             object-fit: cover;
             object-position: center center;
             border-radius: 50%;
-            border: 2px solid var(--accent);
+            border: 1px solid var(--accent);
+            box-shadow: 0 0px 15px var(--accent);
             filter: grayscale(20%);
         }
         
