@@ -1,0 +1,115 @@
+---
+const { class: className, titulo, skills = []} = Astro.props;
+---
+
+<div class={`card ${className || ''}`}>
+
+    <h3>{titulo}</h3>
+
+    <ul>
+        {skills.map((skill) => (
+            <li>{skill}</li>
+        ))}
+    </ul>
+
+</div>
+
+<style>
+
+    .card{
+
+        margin: 0;
+        width: 100%;
+        padding: 2rem;
+        
+        border: 2px solid transparent;
+        box-shadow: 0 0 0 transparent;
+
+        transition: all 0.5s ease;
+    }
+
+    /* Hover */
+    .card:hover{
+        border: 2px solid var(--accent);
+        box-shadow: 0 0 15px var(--accent);
+    }
+
+    .card h3 {
+        text-align: center;
+        margin: auto;
+        font-size: 2rem;
+        transform: translateY(5rem);
+        transition: transform 0.4s ease;
+    }
+
+    .card ul {
+
+        list-style: none;
+        padding: 0;
+
+        /* Oculto inicialmente */
+        opacity: 0;
+        transform: translateY(-20px);
+
+        transition: opacity 0.4s ease, transform 0.4s ease;
+
+    }
+    
+    .card ul li {
+        margin: 1rem 0;
+        padding-left: 1.5rem;
+        font-size: 1.2rem;
+        color: var(--text-skill);
+        text-shadow: 0 0 0px transparent;
+
+        border-radius: 4rem;
+        border-left: 2px solid var(--accent);
+
+        transition: all 0.3s ease;
+    }
+    
+    .card ul li:hover {
+        cursor: default;
+        color: var(--accent);
+        text-shadow: 0 0 10px var(--accent);
+        padding-left: 2rem;
+    }
+
+    .card:hover h3{
+        transform: translateY(0);
+    }
+
+    .card:hover ul{
+        margin-top: 2rem;
+        transition-delay: 0.2s;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+        .card {
+            width: 80vw;
+            padding: 9.5vw;
+            overflow: hidden;
+
+            border: 0.5vw solid var(--accent);
+            box-shadow: 0 0 15px var(--accent);
+        }
+
+        .card h3 {
+            text-align: center;
+            margin: auto;
+            font-size: 2rem;
+            transform: translateY(0);
+        }
+
+        .card ul{
+            margin-top: 2rem;
+            transition-delay: 0.2s;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+</style>

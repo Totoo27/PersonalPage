@@ -1,65 +1,143 @@
- <section class="container">
-        <div class="scroll-reveal about-text">
+ ---
+ import SkillCard from './SkillCard.astro';
+ ---
+ 
+ 
+    <section id="about">
+        <div class="scroll-reveal about-text container">
             <h2 class="section-title">Sobre mí</h2>
-            <p>Soy un apasionado de la informática con experiencia en el desarrollo de videojuegos y sistemas web. Me motiva resolver problemas lógicos y diseñar interfaces que ofrezcan una gran experiencia de usuario.</p>
+            <p>Desarrollador de software junior con perfil full-stack y una orientación más sólida hacia el desarrollo back-end, área en la que disfruto especialmente diseñar lógica, resolver problemas y construir soluciones escalables y eficientes. También cuento con experiencia en front-end, lo que me permite comprender y participar en el desarrollo completo de una aplicación.</p>
+            <p>Me apasiona la programación y el aprendizaje constante. Soy una persona autodidacta, proactiva y con gran capacidad de adaptación a nuevas herramientas, tecnologías y desafíos técnicos. Disfruto enfrentar problemas complejos, analizar distintas soluciones y encontrar la forma más eficiente de resolverlos.</p>
         </div>
-        <div class="skills">
+    </section>
 
-            <div class="scroll-reveal">
-                <h3 class="skill-title">Lenguajes</h3>
-                <div class="skill-tags">
-                    <span>Java</span>
-                    <span>C/C++</span>
-                    <span>PHP</span>
-                    <span>MySQL</span>
-                    <span>HTML/CSS/JS</span>
-                </div>
+    <section id="skills">
+        <div class="skills scroll-reveal container">
+            
+            <input type="radio" name="radio-btn" id="radio1" checked>
+            <input type="radio" name="radio-btn" id="radio2">
+            <input type="radio" name="radio-btn" id="radio3">
+
+            <div class="slides">  
+                <SkillCard class="first" titulo="FRONT-END" skills={["Astro", "HTML", "CSS", "JavaScript"]} />
+                <SkillCard titulo="BACK-END" skills={["Java", "C++", "PHP"]} />
+                <SkillCard titulo="GAME DESIGN" skills={["Godot Engine", "GDScript"]} />
             </div>
-                
-            <div class="scroll-reveal">
-                 <h3 class="skill-title">Herramientas</h3>
-                 <div class="skill-tags">
-                     <span>GitHub</span>
-                     <span>Visual Studio Code</span>
-                     <span>IntelliJ IDEA</span>
-                     <span>Eclipse IDE</span>
-                     <span>Godot Engine</span>
-                     <span>Sublime Text</span>
-                 </div>
+
+            <div class="navigation-manual">
+                <label for="radio1" class="manual-btn"></label>
+                <label for="radio2" class="manual-btn"></label>
+                <label for="radio3" class="manual-btn"></label>
             </div>
+
         </div>
     </section>
 
     <style>
         
+        :global(section#skills) .container {
+            background-color: #000000;
+            max-width: none;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            height: 20rem;
+            overflow: hidden; /* Evita que las tarjetas desborden la pantalla en mobile */
+        }  
 
-        /* Skills */
-        .skill-tags {
-            margin-bottom: 1rem;
+        section#about .section-title {
+            margin: 2rem 1rem;
         }
-        
-        .skill-tags span {
-            display: inline-block;
-            background: var(--bg-color);
-            padding: 5px 15px;
-            margin: 5px;
-            border-radius: 20px;
+
+        .about-text {
+            margin: 5rem auto;
+            padding: 1rem;
+            background-color: var(--card-bg);
+            
+            box-shadow: 0 0 10px var(--accent);
             border: 1px solid var(--accent);
-            color: var(--text-secondary);
-            font-size: 1rem;
+            border-radius: 1rem;
         }
-        
-        .skill-tags span:hover {
-            cursor: default;
-            background: var(--accent);
-            color: var(--text-primary);
-            border-color: var(--accent);
-            transition: all 0.3s;
-        
+
+        input[name="radio-btn"] {
+            display: none;
         }
-        
-        .skill-title {
-            margin: 1.5rem 0 0.75rem;
-            padding-left: 0.6rem;
+
+        .slides {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: row;
+        }   
+
+        .slides > * {
+            flex: 1;
+            min-width: 0;
+            transition: transform 0.5s ease, margin 0.5s ease;
+        }
+
+        .skills {
+            position: relative;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (max-width: 768px) {
+            .about-text {
+                width: 80%;
+            }
+
+            .slides {
+                width: 300%;
+            }
+
+            .slides > * {
+                flex: 0 0 100%;
+                width: 100%;
+                transition: margin 0.5s ease;
+            }
+
+            #radio1:checked ~ .slides :global(.first) {
+                margin-left: 0;
+            }
+
+            #radio2:checked ~ .slides :global(.first) {
+                margin-left: -33.33%;
+            }
+
+            #radio3:checked ~ .slides :global(.first) {
+                margin-left: -66.66%;
+            }
+
+            .navigation-manual {
+                position: absolute;
+                bottom: 5px;
+                left: 0;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                gap: 15px;
+                z-index: 10;
+            }
+
+            .manual-btn {
+                display: block;
+                width: 15px;
+                height: 15px;
+                border: 2px solid var(--accent);
+                border-radius: 50%;
+                cursor: pointer;
+                box-shadow: 0 0 15px var(--accent);
+                transition: background 0.3s ease;
+            }
+
+            #radio1:checked ~ .navigation-manual .manual-btn[for="radio1"],
+            #radio2:checked ~ .navigation-manual .manual-btn[for="radio2"],
+            #radio3:checked ~ .navigation-manual .manual-btn[for="radio3"] {
+                background-color: var(--accent); /* Se rellena con tu color principal */
+            }
         }
     </style>
