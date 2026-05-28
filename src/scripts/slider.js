@@ -1,14 +1,44 @@
-const intervalTime = 200;
-const cantidadSlides = 3;
 
+const INTERVAL_TIME_MS = 5000;
+const CANTIDAD_SLIDES = 3;
+
+
+const BUTTONS = document.querySelectorAll('input[name="radio-btn"]');
 let counter = 1;
 
-setInterval(function() {
-    document.getElementById('radio' + counter).checked = true;
+let sliderTimer;
+startSliderTimer();
 
-    counter++;
-    if (counter > cantidadSlides) {
-        counter = 1;
-    }
+BUTTONS.forEach(button => {
 
-}, intervalTime);
+    button.addEventListener('click', () => {
+
+        clearInterval(sliderTimer);
+        startSliderTimer();
+
+        const BUTTON_ID = button.getAttribute('id');
+        counter = parseInt(BUTTON_ID.replace('radio', ''));
+
+    });
+
+});
+
+function startSliderTimer(){
+
+    sliderTimer = setInterval(function() {
+
+        document.getElementById('radio' + counter).checked = true;
+
+        counter++;
+
+        if (counter > CANTIDAD_SLIDES) {
+
+            counter = 1;
+
+        }
+
+    }, INTERVAL_TIME_MS);
+
+}
+
+

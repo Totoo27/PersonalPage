@@ -2,6 +2,9 @@
  import SkillCard from './SkillCard.astro';
  ---
  
+    <script>
+  		import "../../scripts/slider.js";
+	</script>
  
     <section id="about">
         <div class="scroll-reveal about-text container">
@@ -41,7 +44,7 @@
             width: 100%;
             margin: 0;
             padding: 0;
-            height: 20rem;
+            height: 25rem;
             overflow: hidden; /* Evita que las tarjetas desborden la pantalla en mobile */
         }  
 
@@ -114,7 +117,7 @@
 
             .navigation-manual {
                 position: absolute;
-                bottom: 5px;
+                bottom: 10px;
                 left: 0;
                 width: 100%;
                 display: flex;

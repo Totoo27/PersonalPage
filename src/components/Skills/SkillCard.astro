@@ -7,7 +7,7 @@ const { class: className, titulo, skills = []} = Astro.props;
     <h3>{titulo}</h3>
 
     <ul>
-        {skills.map((skill) => (
+        {skills.map((skill: string) => (
             <li>{skill}</li>
         ))}
     </ul>
@@ -35,17 +35,19 @@ const { class: className, titulo, skills = []} = Astro.props;
     }
 
     .card h3 {
+        position: relative;
         text-align: center;
         margin: auto;
         font-size: 2rem;
-        transform: translateY(5rem);
-        transition: transform 0.4s ease;
+        top: 40%;
+        transition: all 0.4s ease;
     }
 
     .card ul {
 
         list-style: none;
         padding: 0;
+        margin: 1rem 0;
 
         /* Oculto inicialmente */
         opacity: 0;
@@ -76,7 +78,7 @@ const { class: className, titulo, skills = []} = Astro.props;
     }
 
     .card:hover h3{
-        transform: translateY(0);
+        top: 1rem;
     }
 
     .card:hover ul{
@@ -97,6 +99,7 @@ const { class: className, titulo, skills = []} = Astro.props;
         }
 
         .card h3 {
+            toP: 1rem;
             text-align: center;
             margin: auto;
             font-size: 2rem;
