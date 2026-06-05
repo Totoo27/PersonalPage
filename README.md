@@ -40,5 +40,3 @@ Run these commands from the project root:
 │   └── pages/
 └── package.json
 ```
-
-> A simple portfolio to keep your projects organized, deployed, and ready for visitors.
