@@ -1,6 +1,6 @@
 
 const INTERVAL_TIME_MS = 5000;
-const CANTIDAD_SLIDES = 3;
+const CANTIDAD_SLIDES = 4;
 
 
 const BUTTONS = document.querySelectorAll('input[name="radio-btn"]');
