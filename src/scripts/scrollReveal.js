@@ -35,8 +35,8 @@ function checkReveal(reveal) {
 
 }
 
-   function initializeTransition(element){
-       element.style.transition = "all 0.9s ease";
+function initializeTransition(element){
+    element.style.transition = "all 0.9s ease";
 }
 
 
