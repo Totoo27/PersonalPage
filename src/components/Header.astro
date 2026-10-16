@@ -1,0 +1,26 @@
+---
+import { nav } from '../data/site';
+---
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Ir al inicio">Ignacio <span>Diaz Diaz</span></a>
+    <nav aria-label="Principal">
+      <ul>
+        {nav.map((n) => <li><a href={n.href}>{n.label}</a></li>)}
+      </ul>
+    </nav>
+  </div>
+</header>
+<style>
+  header { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--bg) 82%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .bar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 3.6rem; }
+  .brand { font-family: var(--mono); font-weight: 700; text-decoration: none; }
+  .brand span { color: var(--accent); }
+  ul { display: flex; gap: 1.25rem; flex-wrap: wrap; justify-content: flex-end; }
+  nav a { color: var(--muted); text-decoration: none; font-size: .92rem; transition: color .2s; }
+  nav a:hover { color: var(--text); }
+  @media (max-width: 640px) {
+    .bar { flex-direction: column; align-items: flex-start; padding-block: .6rem; gap: .2rem; }
+    ul { gap: .9rem; justify-content: flex-start; }
+  }
+</style>

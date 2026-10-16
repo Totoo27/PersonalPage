@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+<section id="top" class="hero">
+  <div class="wrap grid">
+    <div class="copy">
+      <p class="eyebrow">{site.role} · Backend</p>
+      <h1>{site.name}</h1>
+      <p class="lead">
+        Estudiante del último año de una escuela técnica en Computación. Me enfoco en backend —C#, Node.js, Java y bases de datos— y también armo las interfaces que lo acompañan.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="#proyectos">Ver proyectos <Icon name="arrow" /></a>
+        <a class="btn" href="#contacto">Contacto</a>
+        <a class="btn" href={site.cv} target="_blank" rel="noopener noreferrer">CV <Icon name="download" /></a>
+      </div>
+      <ul class="social" aria-label="Enlaces profesionales">
+        <li><a href={site.github} target="_blank" rel="noopener noreferrer" aria-label="GitHub (se abre en una pestaña nueva)"><Icon name="github" size={22} /></a></li>
+        <li><a href={site.linkedin} target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (se abre en una pestaña nueva)"><Icon name="linkedin" size={22} /></a></li>
+        <li><a href={`mailto:${site.email}`} aria-label="Enviar un correo"><Icon name="mail" size={22} /></a></li>
+      </ul>
+    </div>
+    <Image class="photo" src={site.photo} width={480} height={480} alt="Retrato de Ignacio" loading="eager" />
+  </div>
+</section>
+<style>
+  .hero { padding-block: clamp(3rem, 9vw, 7rem) clamp(2rem, 5vw, 4rem); }
+  .grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: clamp(2rem, 6vw, 4rem); align-items: center; }
+  h1 { font-size: clamp(2.3rem, 6vw, 4rem); line-height: 1.08; letter-spacing: -.025em; margin: .6rem 0 1.2rem; }
+  .lead { color: var(--muted); font-size: clamp(1.05rem, 2vw, 1.2rem); max-width: 34rem; }
+  .actions { display: flex; flex-wrap: wrap; gap: .7rem; margin: 1.8rem 0 1.4rem; }
+  .social { display: flex; gap: 1rem; }
+  .social a { color: var(--muted); display: inline-flex; padding: .3rem; transition: color .2s; }
+  .social a:hover { color: var(--accent); }
+  .photo { width: 100%; max-width: 340px; aspect-ratio: 1; object-fit: cover; object-position: center 20%; border-radius: 28px; border: 1px solid var(--border); justify-self: end; }
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .photo { order: -1; justify-self: start; max-width: 200px; border-radius: 22px; }
+  }
+</style>

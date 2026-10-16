@@ -1,0 +1,22 @@
+---
+import Section from './Section.astro';
+import Icon from './Icon.astro';
+import { site } from '../data/site';
+---
+<Section id="contacto" eyebrow="Contacto" title="Hablemos">
+  <p class="intro">Si tenés una oportunidad para un desarrollador junior o querés charlar sobre alguno de mis proyectos, el correo es la forma más rápida.</p>
+  <a class="mail" href={`mailto:${site.email}`}>{site.email}</a>
+  <div class="links">
+    <a class="btn primary" href={`mailto:${site.email}`}><Icon name="mail" size={16} /> Escribirme</a>
+    <a class="btn" href={site.linkedin} target="_blank" rel="noopener noreferrer"><Icon name="linkedin" size={16} /> LinkedIn</a>
+    <a class="btn" href={site.github} target="_blank" rel="noopener noreferrer"><Icon name="github" size={16} /> GitHub</a>
+    <a class="btn" href={site.cv} target="_blank" rel="noopener noreferrer"><Icon name="download" size={16} /> CV</a>
+  </div>
+</Section>
+<style>
+  .intro { color: var(--muted); max-width: 36rem; margin: -1rem 0 1.5rem; }
+  .mail { display: inline-block; font-size: clamp(1.15rem, 3.5vw, 1.8rem); font-weight: 700; text-decoration: none; border-bottom: 2px solid var(--accent); padding-bottom: .1rem; overflow-wrap: anywhere; }
+  .mail:hover { color: var(--accent); }
+  .phone { margin-top: .8rem; color: var(--muted); }
+  .links { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 2rem; }
+</style>

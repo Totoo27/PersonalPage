@@ -1,0 +1,15 @@
+---
+import { site } from '../data/site';
+---
+<footer>
+  <div class="wrap">
+    <p>© {new Date().getFullYear()} {site.name}</p>
+    <p><a href="#top">Volver arriba ↑</a></p>
+  </div>
+</footer>
+<style>
+  footer { border-top: 1px solid var(--border); padding-block: 2rem; color: var(--muted); font-size: .9rem; }
+  .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem; }
+  a { text-decoration: none; }
+  a:hover { color: var(--accent); }
+</style>

@@ -1,0 +1,41 @@
+---
+import Section from './Section.astro';
+import { experience, education } from '../data/site';
+const cols = [
+  { heading: 'Experiencia', items: experience },
+  { heading: 'Formación', items: education },
+];
+---
+<Section id="experiencia" eyebrow="Trayectoria" title="Experiencia y formación">
+  <div class="cols">
+    {cols.map((c) => (
+      <div>
+        <h3>{c.heading}</h3>
+        <ol>
+          {c.items.map((it) => (
+            <li>
+              <p class="period">{it.period}</p>
+              <p class="title">{it.title}</p>
+              <p class="org">{it.org}</p>
+              <ul>{it.points.map((p) => <li>{p}</li>)}</ul>
+            </li>
+          ))}
+        </ol>
+      </div>
+    ))}
+  </div>
+</Section>
+<style>
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 5vw, 4rem); }
+  h3 { font-size: 1.1rem; margin-bottom: 1rem; }
+  ol { list-style: none; margin: 0; padding: 0 0 0 1.25rem; border-left: 1px solid var(--border); display: grid; gap: 1.75rem; }
+  ol > li { position: relative; }
+  ol > li::before { content: ''; position: absolute; left: calc(-1.25rem - 4px); top: .55rem; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .period { font-family: var(--mono); font-size: .8rem; color: var(--muted); }
+  .title { font-weight: 600; font-size: 1.05rem; margin-top: .15rem; }
+  .org { color: var(--muted); margin-bottom: .5rem; }
+  ol ul { display: grid; gap: .3rem; color: var(--muted); font-size: .95rem; }
+  ol ul li { padding-left: 1rem; position: relative; }
+  ol ul li::before { content: '–'; position: absolute; left: 0; color: var(--accent); }
+  @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
+</style>

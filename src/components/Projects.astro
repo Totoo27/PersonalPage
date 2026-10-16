@@ -1,0 +1,17 @@
+---
+import Section from './Section.astro';
+import FeaturedProject from './FeaturedProject.astro';
+import SchoolProjectCard from './SchoolProjectCard.astro';
+import { featured, project } from '../data/site';
+---
+<Section id="proyectos" eyebrow="Proyectos" title="Lo que estuve construyendo">
+  <p class="intro">Mis proyectos personales y escolares. Los dos primeros son donde más tiempo puse.</p>
+  {featured.map((p, i) => <FeaturedProject {...p} reverse={i % 2 === 1} />)}
+  <h3 class="sub">Otros proyectos</h3>
+  <div class="grid">{project.map((p) => <SchoolProjectCard {...p} />)}</div>
+</Section>
+<style>
+  .intro { color: var(--muted); max-width: 38rem; margin: -1rem 0 2rem; }
+  .sub { font-size: 1.2rem; margin: 3rem 0 1.2rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.25rem; }
+</style>

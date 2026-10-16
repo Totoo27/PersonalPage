@@ -1,0 +1,50 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import Icon from './Icon.astro';
+import type { Link } from '../data/site';
+
+interface Props {
+  title: string; kicker: string; summary: string; highlights: string[];
+  stack: string[]; links: Link[]; image: ImageMetadata; imageAlt: string; reverse?: boolean;
+}
+const { title, kicker, summary, highlights, stack, links, image, imageAlt, reverse = false } = Astro.props;
+---
+<article class:list={['project', { reverse }]}>
+  <div class="media">
+    <Image src={image} width={900} alt={imageAlt} loading="lazy" />
+  </div>
+  <div class="body">
+    <p class="eyebrow">{kicker}</p>
+    <h3>{title}</h3>
+    <p class="summary">{summary}</p>
+    <p class="label">Qué hay adentro</p>
+    <ul class="points">{highlights.map((h) => <li>{h}</li>)}</ul>
+    <ul class="tags" aria-label="Tecnologías">{stack.map((s) => <li>{s}</li>)}</ul>
+    <div class="links">
+      {links.map((l) => (
+        <a class="btn" href={l.href} target="_blank" rel="noopener noreferrer">
+          {l.label} <Icon name={l.icon ?? 'external'} size={16} />
+        </a>
+      ))}
+    </div>
+  </div>
+</article>
+<style>
+  .project { display: grid; grid-template-columns: 1.05fr 1fr; gap: clamp(1.5rem, 4vw, 3rem); align-items: center; padding: clamp(1rem, 3vw, 1.75rem); background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+  .project + .project { margin-top: 1.5rem; }
+  .reverse .media { order: 2; }
+  .media { overflow: hidden; border-radius: 10px; border: 1px solid var(--border); background: var(--bg); }
+  .media :global(img) { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; image-rendering: auto; }
+  h3 { font-size: 1.6rem; margin: .3rem 0 .7rem; letter-spacing: -.01em; }
+  .summary { color: var(--muted); margin-bottom: 1.1rem; }
+  .label { font-family: var(--mono); font-size: .75rem; text-transform: uppercase; letter-spacing: .08em; color: var(--text); margin-bottom: .4rem; }
+  .points { display: grid; gap: .45rem; margin-bottom: 1.1rem; }
+  .points li { position: relative; padding-left: 1.1rem; color: var(--muted); font-size: .95rem; }
+  .points li::before { content: ''; position: absolute; left: 0; top: .7em; width: .45rem; height: 2px; background: var(--accent); }
+  .links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.2rem; }
+  @media (max-width: 820px) {
+    .project { grid-template-columns: 1fr; }
+    .reverse .media { order: 0; }
+  }
+</style>

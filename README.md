@@ -1,42 +1,34 @@
-# Personal Portfolio
+# Portfolio personal — Ignacio Diaz
 
-> 🧑‍💻 A simple portfolio website to showcase projects, skills, and personal progress.
+Sitio estático hecho con [Astro](https://astro.build) y desplegado en GitHub Pages.
+Sin frameworks de UI ni dependencias extra: HTML semántico, CSS con componentes de Astro y un script mínimo (`IntersectionObserver`) para las animaciones de entrada.
 
-## 🎯 Purpose
+## Comandos
 
-This site is a clean and minimal portfolio for storing and sharing selected projects. It is designed to present work and skills clearly and make it easy to navigate from a single page.
+| Comando               | Acción                                              |
+| :-------------------- | :-------------------------------------------------- |
+| `npm install`         | Instala dependencias                                |
+| `npm run dev`         | Servidor local (`http://localhost:4321/PersonalPage/`) |
+| `npm run build`       | Genera el sitio en `dist/`                          |
+| `npm run preview`     | Sirve el build localmente                           |
+| `npm run check:todos` | Lista los datos pendientes de completar             |
 
-## ✨ What it includes
-
-- A brief introduction section
-- Skills and technology overview
-- Project cards to highlight completed work
-- A polished layout with straightforward navigation
-
-## 🚀 Deployment
-
-This portfolio is already deployed and ready to share. It is built with Astro and optimized for a fast, simple web experience.
-
-## 🛠️ Development
-
-Run these commands from the project root:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local development server                  |
-| `npm run build`           | Builds the production site                       |
-| `npm run preview`         | Previews the built site locally                  |
-
-## 📁 Project structure
+## Estructura
 
 ```text
-/
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── layouts/
-│   └── pages/
-└── package.json
+src/
+├── data/site.ts        ← TODO el contenido (textos, proyectos, stack, niveles, enlaces)
+├── layouts/Layout.astro← <head>, SEO, estilos globales
+├── styles/global.css   ← variables de diseño y estilos base
+├── components/         ← Header, Hero, Projects, About, Experience, Skills, Contact, Footer…
+├── scripts/reveal.ts   ← animación de entrada (respeta prefers-reduced-motion)
+└── assets/             ← imágenes (Astro las optimiza a WebP)
 ```
+
+Para editar contenido casi nunca hace falta tocar componentes: cambiá `src/data/site.ts`.
+Los campos `TODO('…')` se muestran resaltados en amarillo en el sitio hasta que los completes.
+
+## Despliegue
+
+`astro.config.mjs` define `site` y `base: '/PersonalPage/'`, y `.github/workflows/deploy.yml` publica en cada push a `main`
+(en el repo: *Settings → Pages → Source: GitHub Actions*). Si cambiás el nombre del repo, actualizá `base`.

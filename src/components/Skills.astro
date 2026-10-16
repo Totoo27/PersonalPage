@@ -1,0 +1,36 @@
+---
+import Section from './Section.astro';
+import { skills, levelLabel } from '../data/site';
+---
+<Section id="stack" eyebrow="Stack" title="Con qué trabajo">
+  <p class="intro">Agrupado por área y con el nivel que tengo hoy en cada herramienta.</p>
+  <div class="grid">
+    {skills.map((g) => (
+      <div class="group">
+        <h3>{g.group}</h3>
+        <ul>
+          {g.items.map((s) => (
+            <li>
+              <span class="name">{s.name}</span>
+              <span class="level">
+                {levelLabel[s.level]}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</Section>
+<style>
+  .intro { color: var(--muted); margin: -1rem 0 2rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+  .group { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.25rem; }
+  h3 { font-size: .8rem; font-family: var(--mono); text-transform: uppercase; letter-spacing: .08em; color: var(--accent); margin-bottom: .9rem; }
+  li { display: flex; justify-content: space-between; align-items: center; gap: .75rem; padding: .5rem 0; border-top: 1px solid var(--border); }
+  li:first-child { border-top: 0; }
+  .name { font-weight: 600; }
+  .level { display: inline-flex; align-items: center; gap: .5rem; color: var(--muted); font-size: .8rem; white-space: nowrap; }
+  i { width: 7px; height: 7px; border-radius: 50%; background: var(--border); }
+  i.on { background: var(--accent); }
+</style>
