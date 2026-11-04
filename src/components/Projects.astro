@@ -4,7 +4,7 @@ import FeaturedProject from './FeaturedProject.astro';
 import SchoolProjectCard from './SchoolProjectCard.astro';
 import { featured, project } from '../data/site';
 ---
-<Section id="proyectos" eyebrow="Proyectos" title="Lo que estuve construyendo">
+<Section id="proyectos" title="Mis Proyectos">
   <p class="intro">Mis proyectos personales y escolares. Los dos primeros son donde más tiempo puse.</p>
   {featured.map((p, i) => <FeaturedProject {...p} reverse={i % 2 === 1} />)}
   <h3 class="sub">Otros proyectos</h3>

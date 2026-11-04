@@ -1,15 +1,15 @@
 import type { ImageMetadata } from 'astro';
 import foto from '../assets/foto-perfil.jpg';
 import exilion from '../assets/exilion.png';
-import hostEft from '../assets/proyecto1p.png';
-import odisea from '../assets/proyecto1.png';
-import anteocion from '../assets/proyecto2.png';
-import pirate from '../assets/proyecto3.png';
+import hostEft from '../assets/host-eft.png';
+import odisea from '../assets/odiseaDeMoya.png';
+import anteocion from '../assets/anteocion.png';
+import volcanicNode from '../assets/navathon.jpg';
 
 export const site = {
   name: 'Ignacio Esteban Diaz Diaz',
   role: 'Desarrollador de software junior',
-  title: 'Ignacio Diaz — Desarrollador de software junior (backend)',
+  title: 'Ignacio Diaz Diaz — Desarrollador de software junior',
   description: 'Portfolio de Ignacio Esteban Diaz Diaz, desarrollador de software junior orientado a backend. Proyectos con C#, Node.js, Java y MySQL.',
   photo: foto as ImageMetadata,
   email: 'ignaciodiazdiaz27@gmail.com',
@@ -49,23 +49,36 @@ export const featured = [
     imageAlt: 'Pantalla de menú principal de EXILION',
   },
   {
-    title: 'Host-EFT - Haxball',
-    kicker: 'Backend · Proyecto personal',
+    title: 'Sistema de monitoreo volcánico',
+    kicker: 'Aplicación Web · Hackathon Navathon III',
     summary:
-      'Servidor y API para gestionar un host de fútbol sobre HaxBall Headless. Un servicio Express con MySQL guarda jugadores, clubes y estadísticas, y el host headless lo consume para agregar comandos y automatizar la gestión del servidor.',
+      'Sistema de monitoreo ambiental orientado a la detección de condiciones de riesgo volcánico mediante sensores, persistencia de datos y visualización a través de una API REST.',
     highlights: [
-      'API REST con Express y mysql2, separada en servicios (jugadores, clubes, estadísticas, remeras, frases).',
-      'Esquema y datos de ejemplo en SQL versionados en el repositorio.',
-      'Integración con HaxBall Headless Host en JavaScript.',
+      'Desarrollo e integración de una API REST con ASP.NET Core y MySQL para gestionar y almacenar los registros de los sensores.',
+      'Captura y envío de mediciones mediante ESP32, con comunicación hacia la API REST a través de una red privada.',
+      'Visualización de mediciones mediante un dashboard con gráficos interactivos.',
+      'Implementación de simulación de sensores y generación de alertas según los niveles de riesgo volcánico.',
     ],
-    stack: ['JavaScript', 'Node.js', 'Express', 'MySQL'],
-    links: [{ label: 'Repositorio', href: 'https://github.com/Totoo27/Host-EFT', icon: 'github' }] as Link[],
-    image: hostEft as ImageMetadata,
-    imageAlt: 'Captura del proyecto Host-EFT',
+    stack: ['C#', 'ASP.NET Core', 'MySQL', 'JavaScript'],
+    links: [{ label: 'Repositorio', href: 'https://github.com/ivoo555/Sociedad-anonima.git', icon: 'github' }] as Link[],
+    image: volcanicNode as ImageMetadata,
+    imageAlt: 'Captura del dashboard de monitoreo volcánico y ambiental',
   },
 ];
 
 export const project = [
+
+  {
+    title: 'Haxball Host EFT',
+    type: 'Bot',
+    description:
+      'Servidor y API para gestionar un host de fútbol sobre HaxBall Headless. Un servicio Express con MySQL guarda jugadores, clubes y estadísticas, y el host headless lo consume para agregar comandos y automatizar la gestión del servidor.',
+    stack: ['JavaScript', 'Node.js', 'Express', 'MySQL'],
+    href: 'https://github.com/Totoo27/Host-EFT',
+    image: hostEft as ImageMetadata,
+    imageAlt: 'Captura de Host EFT',
+  },
+
   {
     title: 'Odisea de Moya',
     type: 'Videojuego',
@@ -85,17 +98,7 @@ export const project = [
     href: 'https://github.com/Totoo27/Pagina-Anteocion',
     image: anteocion as ImageMetadata,
     imageAlt: 'Captura de la web Anteoción',
-  },
-  {
-    title: 'The Pirate Oddysey',
-    type: 'Videojuego',
-    description:
-      'Plataformero shooter en Java con vida, enemigos y jefes, sistema de niveles y puntuación final pensada para la rejugabilidad.',
-    stack: ['Java'],
-    href: 'https://github.com/Totoo27/Arcade',
-    image: pirate as ImageMetadata,
-    imageAlt: 'Captura de The Pirate Oddysey',
-  },
+  }
 ];
 
 export const about = {
@@ -105,7 +108,7 @@ export const about = {
   ],
   facts: [
     { label: 'Busco', value: 'Primer rol como desarrollador de software junior (backend)' },
-    { label: 'Ubicación', value: 'CABA, Buenos Aires' },
+    { label: 'Ubicación', value: 'Buenos Aires, Argentina' },
     { label: 'Idiomas', value: 'Español nativo, Inglés B2' },
   ],
 };
@@ -119,6 +122,15 @@ export const experience = [
       'Trabajo en aplicaciones empresariales con ASP.NET MVC, C#, SQL y tecnologías web.',
       'Análisis de problemas, busqueda de soluciones y desarrollos de las mismas.',
       'Los detalles se omiten por confidencialidad.',
+    ],
+  },
+  {
+    period: 'Octubre 2025',
+    title: 'Hackathon: Navathon III',
+    org: 'Evento académico',
+    points: [
+      'Desarrollo de sistema de monitoreo volcánico y calidad ambiental con sensores IoT y panel web en tiempo real.',
+      'Comunicación e integración del proyecto con otros grupos de trabajo',
     ],
   },
 ];

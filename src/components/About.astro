@@ -2,7 +2,7 @@
 import Section from './Section.astro';
 import { about } from '../data/site';
 ---
-<Section id="sobre-mi" eyebrow="Sobre mí" title="Quién soy">
+<Section id="sobre-mi" title="Sobre mí">
   <div class="grid">
     <div class="text">{about.paragraphs.map((p) => <p>{p}</p>)}</div>
     <dl>
