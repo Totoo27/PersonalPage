@@ -15,7 +15,7 @@ export const site = {
   email: 'ignaciodiazdiaz27@gmail.com',
   github: 'https://github.com/Totoo27',
   linkedin: 'https://www.linkedin.com/in/ignacio-esteban-diaz-diaz-414062402/',
-  cv: 'https://drive.google.com/file/d/1EyWIZXokjbQpfUXcfLpVHMSy-EcjdiYa/view?usp=sharing',
+  cv: `${import.meta.env.BASE_URL}documents/CVPortfolio.pdf`,
 };
 
 export const nav = [
